@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+    <resultMap id="userMap" type="com.example.demo.entity.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="enable" column="enable"/>
+        <result property="accountNonExpired" column="account_non_expired"/>
+        <result property="credentialsNonExpired" column="credentials_non_expired"/>
+        <result property="accountNonLocked" column="account_non_locked"/>
+
+        <collection property="roles" resultMap="com.example.demo.mapper.RoleMapper.roleMap" javaType="java.util.List"/>
+    </resultMap>
+    <sql id="UserVo">
+        select u.id,u.username,u.password,u.enable,u.account_non_expired,u.credentials_non_expired,u.account_non_locked,
+        r.id role_id1,r.role_name,r.role_key
+        from user u
+        left join user_role ur on ur.user_id = u.id
+        left join role r on ur.role_id = r.id
+    </sql>
+    <select id="findAll" resultMap="userMap">
+        <include refid="UserVo"/>
+    </select>
+
+    <select id="findByUsername" parameterType="String" resultMap="userMap">
+        <include refid="UserVo"/>
+        where u.username = #{username}
+    </select>
+
+    <select id="findRolesByUsername" resultMap="com.example.demo.mapper.RoleMapper.roleMap" parameterType="String">
+        <include refid="UserVo"/>
+        where u.username = #{username}
+    </select>
+
+
+</mapper>

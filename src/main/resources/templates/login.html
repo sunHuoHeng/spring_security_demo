@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="/css/login.css">
+    <!--<script src="./js/jquery-3.3.1/min.js"/>-->
+</head>
+<body>
+    <div id="login">
+        <form id="form" action="/login" method="post">
+            <div class="input">
+                <span>账号：</span>
+                <input class="loginInput" type="text" name="username" value="">
+            </div>
+            <div class="input">
+                <span>密码：</span>
+                <input class="loginInput" type="password" name="password" value="">
+            </div>
+            <div class="input">
+                <span>验证码：</span>
+                <input class="loginInput" type="text" name="code">
+                <img id="image" src="/login/image" >
+            </div>
+            <div >
+                <input id="loginButton" type="submit" value="登录">
+            </div>
+        </form>
+        <p class="loginInput" th:utext="${#request.getAttribute('error')}" style="color: red"></p>
+    </div>
+</body>
+<!--<script type="text/javascript">-->
+    <!--function changeImage() {-->
+        <!--$("#image").click(function () {-->
+            <!--$.get("/login/image",function (result) {-->
+                <!--$(this).attr("arc",result);-->
+            <!--})-->
+        <!--})-->
+
+    <!--}-->
+<!--</script>-->
+</html>

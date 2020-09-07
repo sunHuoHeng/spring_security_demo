@@ -1,0 +1,41 @@
+#login{
+    border: 1px solid #a19b9c;
+    background-color: bisque;
+    margin: 100px auto;
+    padding: 40px;
+    width: 400px;
+    height: 200px;
+    /*text-align: center;*/
+
+}
+#login form{
+    margin: auto 0px;
+    margin-left: 15px;
+    width: 370px;
+}
+.loginInput{
+    border: bisque 1px solid;
+    line-height: 30px;
+    margin: 3px auto;
+    text-align: left ;
+    width: 180px;
+    font-size: 18px;
+}
+
+.loginInput:hover{
+    background-color: #2eacff;
+}
+.input img{
+    vertical-align: bottom;
+    margin-bottom: 4px;
+}
+.input span{
+    display: inline-block;
+    width: 70px;
+}
+#loginButton{
+    margin-top: 5px;
+    width: 60px;
+    height: 30px;
+    background-color: azure;
+}
